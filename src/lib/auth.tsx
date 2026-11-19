@@ -29,7 +29,13 @@ interface AuthContextValue {
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null);
-const TOKEN_KEY = "leaflens_access_token";
+export const TOKEN_KEY = "leaflens_access_token";
+
+export function getAccessToken() {
+  return typeof window === "undefined"
+    ? null
+    : sessionStorage.getItem(TOKEN_KEY);
+}
 
 export function AuthProvider({
   children,

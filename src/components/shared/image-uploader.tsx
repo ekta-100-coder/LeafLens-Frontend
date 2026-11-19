@@ -29,6 +29,8 @@ export function ImageUploader({
 
   useEffect(() => {
     if (!selectedFile) {
+      // The preview is derived from the selected file and cleared when it is removed.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPreviewUrl(null);
       return;
     }

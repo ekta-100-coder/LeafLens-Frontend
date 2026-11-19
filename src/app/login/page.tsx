@@ -47,7 +47,7 @@ export default function LoginPage() {
           Welcome back
         </p>
         <h1 className="mt-2 text-3xl font-semibold tracking-tight">
-          Let's grow together.
+          Let&apos;s grow together.
         </h1>
         <p className="mt-3 text-sm leading-6 text-[#6d7c70]">
           Sign in to check on your plants and continue their care journey.

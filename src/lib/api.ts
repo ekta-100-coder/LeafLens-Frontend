@@ -1,4 +1,4 @@
-﻿const API_URL = (
+const API_URL = (
   process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api/v1"
 ).replace(/\/+$/, "");
 
@@ -42,7 +42,7 @@ export class ApiError extends Error {
 export async function apiRequest<T>(
   path: string,
   options: RequestInit = {},
-  token?: string | null
+  token?: string | null,
 ): Promise<ApiResponse<T>> {
   const headers = new Headers(options.headers);
 
@@ -56,14 +56,13 @@ export async function apiRequest<T>(
   }
 
   if (token) {
-    headers.set("Authorization", `Bearer ${token}`);
+    headers.set("Authorization", "Bearer " + token);
   }
 
   let response: Response;
 
   try {
     const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-
     response = await fetch(`${API_URL}${normalizedPath}`, {
       ...options,
       headers,
@@ -72,7 +71,7 @@ export async function apiRequest<T>(
   } catch {
     throw new ApiError(
       "Unable to reach LeafLens. Check whether the backend is running.",
-      0
+      0,
     );
   }
 
@@ -86,7 +85,6 @@ export async function apiRequest<T>(
       typeof result.message === "string"
         ? result.message
         : "Something went wrong. Please try again.";
-
     throw new ApiError(message, response.status);
   }
 

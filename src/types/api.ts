@@ -1,1 +1,6 @@
-﻿// Implementation will be added in a later batch.
+export interface Pagination {
+  page: number;
+  limit: number;
+  total: number;
+  pages: number;
+}

@@ -1,1 +1,10 @@
-﻿// Implementation will be added in a later batch.
+export interface GrowthRecord {
+  id: string;
+  _id?: string;
+  plant: string;
+  height?: number;
+  width?: number;
+  notes?: string;
+  recordedAt: string;
+  imageUrl?: string;
+}
